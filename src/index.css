@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Space Grotesk", sans-serif;
+}
+  
+.front-card {
+  position: absolute;
+  top: 180px;
+  background: url("./images/bg-card-front.png") no-repeat center/cover;
+  height: 230px;
+  width: 320px;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.back-card {
+  position: absolute;
+  right: 20px;
+  background: url("./images/bg-card-back.png") no-repeat center/cover;
+  height: 230px;
+  width: 320px;
+  border-radius: 10px;
+}
+
+.back-card p {
+  top: 6.15rem;
+}
