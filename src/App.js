@@ -154,7 +154,7 @@ export default function App() {
                     placeholder="Karoline Gaia Alexandre"
                     required
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}                    
                   />
                   {!name && (
                       <span style={{ color: "red" }}>
