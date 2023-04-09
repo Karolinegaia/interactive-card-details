@@ -1,10 +1,101 @@
+import React, { useState } from "react";
 import bgMobile from "./images/bg-main-mobile.png";
 import bgDesktop from "./images/bg-main-desktop.png";
 import logo from "./images/card-logo.svg";
+import tick from "./images/icon-complete.svg";
 
 
+export default function App() {
+  const [confirmed, setConfirmed] = useState(false);
+  const [name, setName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardNumberError, setCardNumberError] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [cvc, setCvc] = useState("");
 
-export default function App() { 
+  function handleMonth (event) {
+    const { value } = event.target;
+    const formattedValue = value.padStart(2, "0");
+  if (formattedValue >= "01" && formattedValue <= "12") {
+    setMonth(formattedValue);
+  }
+    };   
+  
+  
+  function handleChange(event) {
+    const { value } = event.target;
+    setCardNumber(value); 
+  
+    if (!isValidCardNumber(value)) {
+      setCardNumberError('Por favor, insira um número de cartão de crédito válido.');
+    } else {
+      setCardNumberError('');
+    }
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+      if (validateForm()) {
+        console.log("Form submitted successfully");
+        
+      } else {
+        console.log("Form validation failed");
+        
+      }
+    };
+  
+    const validateForm = () => {
+      if (!name || !cardNumber || !month || !year || !cvc) {
+        return false;
+      }
+      return true;
+    };
+      
+    if (cardNumberError === '') {    
+    }
+        
+
+  function isValidCardNumber(cardNumber) {
+    
+    cardNumber = cardNumber.replace(/\s/g,"");
+
+    
+    if (cardNumber.length < 13 || cardNumber.length > 19) {
+      return false;
+    }
+    
+    if (!/^\d+$/.test(cardNumber)) {
+      return false;
+    }
+    
+    let sum = 0;
+    let shouldDouble = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+      let digit = parseInt(cardNumber.charAt(i));
+  
+      if (shouldDouble) {
+        digit *= 2;
+        if (digit > 9) {
+          digit -= 9;
+        }
+      }
+  
+      sum += digit;
+      shouldDouble = !shouldDouble;
+    } 
+    
+    return sum % 10 === 0;
+  }
+
+  function handleYearInput(e) {
+    const input = e.target;
+    const maxLength = input.getAttribute("maxLength");
+    if (input.value.length > maxLength) {
+      input.value = input.value.slice(0, maxLength);
+    }
+  }
 
   return (
     
@@ -22,20 +113,21 @@ export default function App() {
               <img src={logo} alt="" className="w-20 lg:w-28" />
 
               <div>
-                <h2 className="text-white text-xl lg:text-3xl mb-6 tracking-widest">                  
-                    0000 0000 0000 0000
+                <h2 className="text-white text-xl lg:text-3xl mb-6 tracking-widest">
+                  {cardNumber.replace(/\s/g,"").replace(/(\d{4})/g, "$1 ").trim()}
+
                 </h2>
 
                 <ul className="flex items-center justify-between">
                   <li className="text-white uppercase text-base lg:text-xl tracking-widest mb-2" placeholder="Seu Nome Aqui">
-                    Karoline Gaia Alexandre
+                    {name}
                   </li>
                   <div className="flex ">
                     <li className="text-white text-base lg:text-xl tracking-widest mb-2" placeholder="MM/YY">
-                      03/
+                      {month}/
                     </li>
                     <li className="text-white text-base lg:text-xl tracking-widest mb-2" placeholder="MM/YY">
-                      23
+                      {year}
                     </li> 
                   </div>
                                 
@@ -45,14 +137,14 @@ export default function App() {
 
             <article className="back-card relative lg:ml-20">
               <p className="absolute right-10 text-lg lg:text-xl text-white tracking-widest">
-                123
+                {cvc}
               </p>
             </article>
           </div>
 
           <div className="pt-8 px-5 pb-20">
             {!confirmed && (
-              <form className="flex flex-col justify-center gap-7 max-w-lg lg:h-screen">
+              <form {...handleSubmit} className="flex flex-col justify-center gap-7 max-w-lg lg:h-screen">
                 <div>
                   <label htmlFor="cardholder_name">Cardholder Name</label>
                   <input
@@ -61,10 +153,13 @@ export default function App() {
                     id="cardholder_name"
                     placeholder="Karoline Gaia Alexandre"
                     required
-                    value= ""
-                    onChange={''}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
-                   
+                  {!name && (
+                      <span style={{ color: "red" }}>
+                      O campo nome é obrigatório.
+                      </span>)}  
                 </div>
 
                 <div>
@@ -76,8 +171,9 @@ export default function App() {
                     placeholder="1234 5678 9012 3456"
                     required
                     maxLength={16}
-                    value={cardNumber} onChange={''} />
-                                     
+                    value={cardNumber} onChange={handleChange} />
+                    {cardNumberError && <span style={{ color: 'red' }}>{
+                    cardNumberError}</span>}                  
                 </div>
 
                 <article className="flex items-center justify-between gap-8">
@@ -92,11 +188,14 @@ export default function App() {
                       min="1"
                       max="12"
                       maxLength={2}
-                      value={''}
-                      onChange={''}
-                      
+                      value={month}
+                      onChange={handleMonth}
+                      onInput={handleYearInput}
                     />
-                                
+                    {!month && (
+                      <span style={{ color: "red" }}>
+                      O campo do ano é obrigatório.
+                      </span>)}             
                   </div>
                   <div className="flex-1">
                     <label htmlFor="expiry_date">Exp. Date (YY)</label>
@@ -106,14 +205,17 @@ export default function App() {
                       id="expiry_date"
                       placeholder="YY"
                       required
-                      value={''}
+                      value={year}
                       min="23"
                       max="28"                      
                       maxLength={2}
-                      onChange={''}
-                      
+                      onChange={(e) => setYear(e.target.value)}
+                      onInput={handleYearInput}
                     />                    
-                                       
+                     {!year && (
+                      <span style={{ color: "red" }}>
+                      O campo do ano é obrigatório.
+                      </span>)}                   
                     </div>
                   
 
@@ -126,24 +228,49 @@ export default function App() {
                       placeholder="e.g. 123"
                       maxLength={3}
                       required
-                      value={''}
-                      onChange={''}
+                      value={cvc}
+                      onChange={(e) => setCvc(e.target.value)}
                     />
-                    
+                    {!cvc && (
+                      <span style={{ color: "red" }}>
+                      O campo cvc é obrigatório.
+                      </span>)}  
                   </div>
                 </article>
 
-                <button type="submit" onClick={() => {
+                <button type="submit" {...handleSubmit} onClick={() => {
                   setConfirmed(true);             
                 }} className="btn">
                   Confirm
                 </button>
               </form>
             )}
-           
+            {confirmed && <ThankYou setConfirmed={setConfirmed} />}
           </div>
         </div>
       </section>
     
+  );
+}
+
+function ThankYou({ setConfirmed }) {  
+  return (
+    <>
+      <div className="thank-you flex flex-col items-center justify-center lg:h-screen max-w-lg mx-auto">
+        <img src={tick} alt="" className="block mx-auto" />
+        <h1 className="text-slate-800 text-3xl my-6 uppercase text-center">
+          Thank you!
+        </h1>
+        <p className="text-slate-400 text-center">
+          We've added your card details
+        </p>
+        <button
+          onClick={() => setConfirmed(false)}
+          className="btn block mx-auto mt-10 w-full"
+        >
+          Continue
+        </button>
+      </div>
+    </>
   );
 }
