@@ -41,6 +41,21 @@ form label {
 form input {
   @apply border-2 border-slate-300 py-3 px-4 rounded-lg outline-none w-full;
 }
+
+form input:hover{
+  border-color: blueviolet;
+}
+
+form input:active{
+  background-color: #3b2892;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+form input:focus{
+  
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
 form input #expiry_date{
   width: 60%;
 }
