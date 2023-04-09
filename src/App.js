@@ -194,7 +194,7 @@ export default function App() {
                     />
                     {!month && (
                       <span style={{ color: "red" }}>
-                      O campo do ano é obrigatório.
+                      O campo do mês é obrigatório.
                       </span>)}             
                   </div>
                   <div className="flex-1">
