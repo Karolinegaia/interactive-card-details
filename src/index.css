@@ -28,3 +28,62 @@
 .back-card p {
   top: 6.15rem;
 }
+
+form,
+.thank-you {
+  margin-top: 350px;
+}
+
+form label {
+  @apply block uppercase tracking-wider text-slate-800 mb-2 text-sm;
+}
+
+form input {
+  @apply border-2 border-slate-300 py-3 px-4 rounded-lg outline-none w-full;
+}
+form input #expiry_date{
+  width: 60%;
+}
+
+.btn {
+  background-color: hsl(278, 68%, 11%);
+  @apply py-3 px-6 rounded shadow text-white text-base tracking-wide lg:text-lg;
+}
+
+@media (min-width: 768px) {
+  .front-card,
+  .back-card {
+    height: 300px;
+    width: 500px;
+    border-radius: 20px;
+  }
+
+  .back-card p {
+    top: 8.3rem;
+  }
+
+  form,
+  .thank-you {
+    margin-top: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .front-card,
+  .back-card {
+    position: relative;
+  }
+
+  .front-card {
+    top: 50px;
+  }
+
+  .back-card {
+    right: 0;
+  }
+
+  form,
+  .thank-you {
+    margin-top: 0;
+  }
+}
