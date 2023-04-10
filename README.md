@@ -1,18 +1,25 @@
 <a id='ancora'></a>
 # Interactive Card Form
 
-This is a challenge by FrontEnd Mentor for MTD.
 <br>
+This is a challenge by FrontEnd Mentor for MTD.
+
+<br>
+
 [Link da Desafio](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw/hub)
+
+
+[Link da Página (Vercel)](https://interactive-card-details-l2x0kfqr8-karolinegaia.vercel.app)
 
 <br><br>
 
 - [Sobre a Agência Método](#ancora1) <br>
 - [Sobre o Desafio](#ancora2) <br>
 - [Sobre o Projeto](#ancora3) <br>
-- [Competências Desenvolvidas](#ancora4) <br>
-- [Execução](#ancora5) <br>
-- [Desenvolvedora](#ancora6)
+- [Requisitos Obrigatórios](#ancora4) <br>
+- [Competências Desenvolvidas](#ancora5) <br>
+- [Execução](#ancora6) <br>
+- [Desenvolvedora](#ancora7)
 
 <br><br>
 
@@ -51,20 +58,32 @@ Neste projeto você terá uma visão sobre como criar formulários e validaçõe
 
 <br>
 
-Para este projeto foi utilizada a linguagem de Programação JavaScript em conjunto com os Frameworks React e Tailwind.  
+O projeto foi montado seguindo as boas práticas de Code Review, registrando toda e qualquer entrada de informação via Pull Requests, o que facilitaria a montagem de pipelines de teste de código e/ou gestão de conflitos de branchs, conforme árvore de commits:
+
+<p align="center">
+  <img width="600px" src="./src/images/commits.png" alt="admin">
+</p>
 
 <br>
 
-<p align="center">
-<img width="300px" src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="react-logo">
-</p>
-<p align="center">
-<img width="300px" src="https://logospng.org/download/tailwind-css/tailwind-css-1024.png" alt="tailwind-logo">
-</p>
+Para este projeto foram utilizadas as seguintes tecnologias:
+
+<br>
+
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+
+* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+* ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 
 <br>
 
+<a id="ancora4"></a>
 ## Requisitos Obrigatórios
 
 <br>
@@ -73,7 +92,7 @@ Para este projeto foi utilizada a linguagem de Programação JavaScript em conju
 * Preencher o formulário e verem os dados no cartão se atualizarem em tempo real
 
 <p align="center">
-  <img width="300px" src="./src/images/pc.png" alt="admin">
+  <img width="600px" src="./src/images/pc.png" alt="admin">
 </p>
 
 <br>
@@ -84,18 +103,13 @@ Para este projeto foi utilizada a linguagem de Programação JavaScript em conju
     - O número do cartão, data de vencimento ou CVC estão em um formato incorreto.
 
     <p align="center">
-    <img width="300px" src="./src/images/pc-erro.png" alt="admin">
+    <img width="600px" src="./src/images/pc-erro.png" alt="admin">
     </p>
-
-#
-
-
-
 
 ### Requisito 3
 * Verem o layout ideal de acordo com o aparelho e tamanho de tela que estejam utilizando.
  <p align="center">
-    <img width="300px" src="./src/images/pc.png" alt="admin">
+    <img width="600px" src="./src/images/pc.png" alt="admin">
     </p>
      <p align="center">
     <img width="300px" src="./src/images/celular.png" alt="admin">
@@ -103,27 +117,23 @@ Para este projeto foi utilizada a linguagem de Programação JavaScript em conju
 
 <br>
 
-### Requisito 4 (Extra)
-Árvore de commit 
-
-
 <br>
 
-<a id="ancora4"></a>
+<a id="ancora5"></a>
 ### 
 ## Competências Desenvolvidas
 
 <br>
 
-* React;
-* Tailwind;
-* JavaScript;
-* CSS;
-* 
+* Git Flow para controle e versionamento do código;
+* Mobile First;
+* Uso de framework para organização do código;
+* Algorítmo de Luhn para validação de cartão de     crédito.
+ 
 
 <br>
 
-<a id="ancora5"></a>
+<a id="ancora6"></a>
 ## Execução 
 
 <br>
@@ -143,19 +153,19 @@ cd interactive-card-details
 code .
 ````
 
-4. Instale as dependências do React:
+4. Instale as dependências registradas no package.json:
 ````
 npm install
 ````
 
-5. Inicialize o React:
+5. Inicialize o React App:
 ````
 npm start
 ````
 
 <br>
 
-<a id="ancora6"></a>
+<a id="ancora7"></a>
 ## Desenvolvedora
 
 Projeto desenvolvido por:
