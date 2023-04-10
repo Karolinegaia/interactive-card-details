@@ -9,8 +9,6 @@ This is a challenge by FrontEnd Mentor for MTD.
 [Link da Desafio](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw/hub)
 
 
-[Link da Página (Vercel)](https://interactive-card-details-l2x0kfqr8-karolinegaia.vercel.app)
-
 <br><br>
 
 - [Sobre a Agência Método](#ancora1) <br>
